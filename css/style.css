@@ -99,7 +99,7 @@ form {
     max-width: 1280px;
     display: flex;
     overflow: hidden;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
     max-width: 2000px;
     margin: 0 auto;
 }
@@ -111,6 +111,8 @@ form {
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    margin-right: 5px;
+    /* border-right: 1px solid; */
 }
 
 .sidebar-header {
@@ -207,11 +209,26 @@ form {
 .styled-table td:not(:first-child) {
     text-align: right;
 }
+.styled-table tbody tr:last-child {
+    font-weight: bold;
+}
 
 
 .content-main {
-    width: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     max-height: 100%;
     overflow: auto;
     padding: 0 4px;
+   
+}
+.content-main-chart{
+    width: 50%;
+    background-color: #ffffff;
+}
+.content-main-add{
+    width: 50%;
 }

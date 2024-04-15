@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Bss</title>
 </head>
 <body>
@@ -41,8 +42,8 @@
                                 <th>Power Consumption(Kw/h)</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id="tableBody">
+                            <!-- <tr>
                                 <td>TV</td>
                                 <td>00:00:0A:DS:0A:DS</td>
                                 <td>127.0.0.1</td>
@@ -57,18 +58,26 @@
                                 <td>50</td>
                             </tr>
                             <tr class="active-row">
-                                <td>Fan</td>
+                                <td>Total</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td>100</td>
-                            </tr>
-                            <!-- and so on... -->
+                            </tr> -->
                         </tbody>
                     </table>
+
+                    
                 </div>
                 <div class="content-main">
-                    main
+                    <div class="content-main-chart">
+                        <canvas id="myPieChart" width="400" height="400"></canvas>
+                    </div>
+                    <div class="content-main-add">
+                        <input type="text" id="deviceName" placeholder="Device Name">
+                        <input type="text" id="deviceIP" placeholder="Device IP">
+                        <button onclick="addDevice()">Add Device</button>
+                    </div>
                 </div>
             </div>
         </div>
