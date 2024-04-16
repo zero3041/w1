@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Bss</title>
+</head>
+<body>
+    <div class="container">
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <i style="color: #000000;" class="fa-solid fa-server"></i>
+                Device Management
+            </div>
+            
+            <ul class="sidebar-list">
+                <li class="sidebar-list-item active">
+                    <i class="fa-solid fa-house-laptop"></i><a href="">Dashboard</a>
+                </li>
+                <li class="sidebar-list-item ">
+                    <i class="fa-solid fa-clock-rotate-left"></i><a href="">Logs</a>
+                </li>
+                <li class="sidebar-list-item ">
+                    <i class="fa-solid fa-gear"></i><a href="">Settings</a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="content-header">
+                <div class="menu" id="memu" onclick="openMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div id="header" class="content-header_avt    ">
+                    <img src="images/avatar.png" alt="Avatar" class="avatar">
+                    <a href="#">Welcome John</a>
+                </div>
+            </div>
+            <div class="main">
+                <div class="content-actions content-logs">
+                    <div class="action">
+                        <div class="action-title" style="float: left; text-align: center;">
+                            Action Logs 
+                        </div>
+                        <div style="float: right;" class="action-btn">
+                            <input placeholder="name" type="text" id="searchInput">
+                            <button id="searchBtn" class="btn" onclick="search()">Search</button>
+                        </div>
+                    </div>
+                    <table class="styled-table logs" id="logsTable">
+                        <thead>
+                            <tr>
+                                <th>Device ID</th>
+                                <th>Name</th>
+                                <th>Action</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody-log">
+                            <!-- Data will be added dynamically here -->
+                        </tbody>
+                    </table>
+                    
+                    <ul class="pagination" id="pagination">
+                        <!-- Pagination will be added dynamically here -->
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/script.js"></script>
+    <script src="js/logs.js"></script>
+</body>
+</html>
