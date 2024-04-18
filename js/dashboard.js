@@ -10,6 +10,17 @@ var data = [
 
 if(localStorage.getItem('data')) data = JSON.parse(localStorage.getItem("data"));
 
+// document.getElementById('tableBody').addEventListener('click', function(event) {
+//     if (event.target.classList.contains('btn-edit')) {
+//         const index = parseInt(event.target.getAttribute('data-id'));
+//         showEditForm(index);
+//     } else if (event.target.classList.contains('btn-delete')) {
+//         const index = parseInt(event.target.getAttribute('data-id'));
+//         console.log(index);
+//         deleteItem(index);
+//     }
+// });
+
 
 var tbody = document.getElementById("tableBody");
 var totalPowerConsumption = 0;
@@ -18,7 +29,7 @@ function updateTable() {
     tbody.innerHTML = ''; 
     totalPowerConsumption = 0; 
 
-    data.forEach(function(item) { 
+    data.forEach(function(item, index) { 
         var row = document.createElement("tr");
         row.innerHTML = `
             <td>${item.device}</td>
@@ -26,12 +37,15 @@ function updateTable() {
             <td>${item.ip}</td>
             <td>${item.createdDate}</td>
             <td>${item.powerConsumption}</td>
+            <td>
+                <button class="btn-edit btn btn-action" data-id="${index}">Edit</button>
+                <button class="btn-delete btn btn-action" data-id="${index}">Delete</button>
+            </td>
         `;
         tbody.appendChild(row);
 
         totalPowerConsumption += item.powerConsumption;
     });
-
     var totalRow = document.createElement("tr");
     totalRow.innerHTML = `
         <td>Total</td>
@@ -41,6 +55,23 @@ function updateTable() {
         <td>${totalPowerConsumption}</td>
     `;
     tbody.appendChild(totalRow);
+    document.querySelectorAll('.btn-delete').forEach((btn, index) => {
+        btn.addEventListener('click', function() {
+            if (confirm('Bạn có muốn xoá')) {
+                data.splice(index, 1); 
+                saveData(); 
+                updateTable(); 
+                updateChart(); 
+            }
+        });
+    });
+    document.querySelectorAll('.btn-edit').forEach((btn, index) => {
+        btn.addEventListener('click', function() {
+            showEditForm(index); 
+            document.getElementById("formAdd").style.display = "none";
+        });
+    });
+    
 }
 
 updateTable(); 
@@ -150,3 +181,40 @@ document.getElementById("addDeviceBtn").addEventListener("click", function(event
 });
 
 // end chart
+
+// advanced
+
+
+
+
+function showEditForm(index) {
+    const editForm = document.querySelector('.content-main-add form:nth-child(2)');
+    const selectedItem = data[index];
+    editForm.querySelector('#name').value = selectedItem.device;
+    editForm.querySelector('#mac').value = selectedItem.macAddress; 
+    editForm.querySelector('#ip').value = selectedItem.ip;
+    editForm.querySelector('#powerConsumption').value = selectedItem.powerConsumption; 
+    editForm.classList.remove('none'); 
+    editForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const editedItem = {
+            device: editForm.querySelector('#name').value,
+            macAddress: editForm.querySelector('#mac').value,
+            ip: editForm.querySelector('#ip').value,
+            createdDate: "2021-05-31",
+            powerConsumption: parseInt(editForm.querySelector('#powerConsumption').value) 
+        };
+        data[index] = editedItem; 
+        saveData();
+        updateTable(); 
+        updateChart(); 
+        editForm.reset(); 
+        editForm.classList.add('none');
+        document.getElementById("formAdd").style.display = null;
+        
+    });
+}
+
+
+
+// end advanced

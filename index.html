@@ -50,30 +50,11 @@
                                     <th>IP</th>
                                     <th>Created Date</th>
                                     <th>Power Consumption(Kw/h)</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="tableBody">
-                                <!-- <tr>
-                                    <td>TV</td>
-                                    <td>00:00:0A:DS:0A:DS</td>
-                                    <td>127.0.0.1</td>
-                                    <td>2021-05-31</td>
-                                    <td>50</td>
-                                </tr>
-                                <tr class="active-row">
-                                    <td>Fan</td>
-                                    <td>00:00:0A:DS:0A:DS</td>
-                                    <td>127.0.0.1</td>
-                                    <td>2021-05-31</td>
-                                    <td>50</td>
-                                </tr>
-                                <tr class="active-row">
-                                    <td>Total</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>100</td>
-                                </tr> -->
+                            
                             </tbody>
                         </table>
                     </div>
@@ -85,7 +66,7 @@
                             <canvas class="chart" id="myPieChart" width="400" height="400"></canvas>
                         </div>
                         <div class="content-main-add">
-                            <form class="form-login" action="#">
+                            <form id="formAdd" class="form-login" action="#">
                                 <div class="login-field">
                                     <input type="text" id="name" placeholder="name">
                                 </div>
@@ -93,7 +74,24 @@
                                     <input type="text" id="ip" placeholder="IP">
                                 </div>
                                 <div class="btn-group">
-                                    <button class="btn btn-login" id="addDeviceBtn">ADD DEVICE</button> <!-- Thêm id cho nút -->
+                                    <button class="btn btn-login" id="addDeviceBtn">ADD DEVICE</button> 
+                                </div>
+                            </form>
+                            <form class="form-login none" action="#">
+                                <div class="login-field">
+                                    <input type="text" id="name" placeholder="name">
+                                </div>
+                                <div class="login-field">
+                                    <input type="text" id="mac" placeholder="MAC Address">
+                                </div>
+                                <div class="login-field">
+                                    <input type="text" id="ip" placeholder="IP">
+                                </div>
+                                <div class="login-field">
+                                    <input type="text" id="powerConsumption" placeholder="IP">
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-login" id="addDeviceBtn">Edit</button> 
                                 </div>
                             </form>
                         </div>

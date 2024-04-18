@@ -13,6 +13,9 @@ body{
     height: 100vh;
     overflow: hidden;
 }
+.none{
+    display: none;
+}
 
 .login {
     position: absolute;
@@ -293,6 +296,11 @@ form {
 
 .menu{
     display: none;
+}
+
+.btn-action{
+    height: 25px;
+    border-radius: 5px;
 }
 /* end dashboard */
 
