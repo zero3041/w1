@@ -16,6 +16,14 @@ function displayData(data, currentPage, rowsPerPage) {
         `;
         tbody.appendChild(tr);
     }
+    var totalRow = document.createElement("tr");
+    totalRow.innerHTML = `
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td>${data.length}</td>
+    `;
+    tbody.appendChild(totalRow);
 }
 
 function displayPagination(numPages) {
@@ -51,7 +59,6 @@ function init() {
     data = [
         { deviceId: 1, name: "TV", action: "Sleep", date: "2021-05-31" },
         { deviceId: 2, name: "Fan", action: "Turn on", date: "2021-05-31" },
-        // Add 98 more fake data here
     ];
     
     for (var i = 3; i <= 100; i++) {
@@ -72,6 +79,7 @@ function init() {
     var numPages = Math.ceil(totalRows / rowsPerPage);
     displayData(data, currentPage, rowsPerPage);
     displayPagination(numPages);
+
 }
 
 function search() {
